@@ -5,7 +5,7 @@ interface CardProps {
 export const MainLayoutCard: React.FC<CardProps> = ({ children }) => {
   return (
     <main
-      className={`flex flex-col max-w-[800px] border shadow-2xl rounded-lg min-w-full p-5 min-h-10 justify-center`}
+      className={`flex flex-col max-w-[1024px] border-x-2 shadow-2xl p-5 h-full`}
     >
       {children}
     </main>
