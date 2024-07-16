@@ -1,11 +1,6 @@
 import NextLink from "next/link";
-
-interface NextLinkProps extends React.ComponentProps<typeof NextLink> {
-  //Add additional prop definitions here
-}
-
-interface LinkProps extends NextLinkProps {
-  children: JSX.Element;
+interface LinkProps extends React.ComponentProps<typeof NextLink> {
+  // Add additional prop definitions here
 }
 
 const Link = (props: LinkProps) => {
