@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { HomePageLayout } from "@/components/templates/homepagelayout";
 
 export const metadata: Metadata = {
   title: "TechIsHiring Job Hunt Resoures",
@@ -15,9 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex w-full h-screen justify-center px-10">
-          {children}
-        </div>
+        <HomePageLayout>{children}</HomePageLayout>
       </body>
     </html>
   );
