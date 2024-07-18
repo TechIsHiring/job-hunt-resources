@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { Card } from "@/components/atoms/card";
 import { JobResource } from "@/lib/types/job-resource-types";
-import { ResourceCardBody } from "../molecules/resources-card-body";
+import { ResourceCardBody } from "@/components/molecules/resources-card-body";
 
 interface JobHuntResourceListProps {
   jobResources: JobResource[];

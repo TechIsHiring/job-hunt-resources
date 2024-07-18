@@ -1,5 +1,5 @@
 import { JobResource } from "@/lib/types/job-resource-types";
-import { Divider } from "../atoms/divider";
+import { Divider } from "@/components/atoms/divider";
 
 interface ResourceCardBodyProps {
   resourceDetails: JobResource;
