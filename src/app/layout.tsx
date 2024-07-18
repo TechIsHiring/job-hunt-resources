@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { HomePageLayout } from "@/components/templates/homepagelayout";
+import { MainLayoutCard } from "@/components/atoms/card";
+import { Header } from "@/components/organisms/header";
 
 export const metadata: Metadata = {
   title: "TechIsHiring Job Hunt Resoures",
@@ -16,7 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <HomePageLayout>{children}</HomePageLayout>
+        <HomePageLayout>
+          <MainLayoutCard>
+            <Header />
+            {children}
+          </MainLayoutCard>
+        </HomePageLayout>
       </body>
     </html>
   );

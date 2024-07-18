@@ -1,13 +1,19 @@
-interface CardProps {
-  children: React.ReactNode;
+import { cn } from "@/lib/shadcn-ui/utils";
+
+interface CardProps extends React.ComponentProps<"article"> {
+  // Add additional props here
 }
 
-export const Card: React.FC<CardProps> = ({ children }) => {
+export const Card = (props: CardProps) => {
   return (
     <article
-      className={`flex border rounded-lg min-w-full p-5 min-h-10 justify-center`}
+      {...props}
+      className={cn(
+        "border rounded-lg min-w-full p-5 min-h-10 justify-center",
+        props.className
+      )}
     >
-      {children}
+      {props.children}
     </article>
   );
 };
