@@ -6,9 +6,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card } from "@/components/atoms/card";
+import { JobResource } from "@/lib/types/job-resource-types";
+import { ResourceCardBody } from "../molecules/resources-card-body";
 
 interface JobHuntResourceListProps {
-  jobResources: object[];
+  jobResources: JobResource[];
 }
 
 export const JobHuntResourceList = ({
@@ -23,7 +25,7 @@ export const JobHuntResourceList = ({
               <ResourceCardTitle name="Test Job Resource" />
             </AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+              <ResourceCardBody resourceDetails={jobResource} />
             </AccordionContent>
           </Card>
         </AccordionItem>

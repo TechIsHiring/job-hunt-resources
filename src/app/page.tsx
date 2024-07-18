@@ -6,10 +6,14 @@ export default function Home() {
       <JobHuntResourceList
         jobResources={[
           {
-            test: "test",
+            name: "test",
+            description: "test",
+            url: "test",
           },
           {
-            test: "test",
+            name: "test",
+            description: "test",
+            url: "test",
           },
         ]}
       />
