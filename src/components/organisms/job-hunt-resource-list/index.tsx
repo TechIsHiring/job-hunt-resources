@@ -20,7 +20,7 @@ export const JobHuntResourceList = ({
     <Accordion type="single" collapsible className="flex flex-col gap-6 w-full">
       {jobResources.map((jobResource, key) => (
         <AccordionItem key={key} className="border-0" value={`item-${key + 1}`}>
-          <Card>
+          <Card className="hover:bg-slate-500 hover:bg-opacity-35">
             <AccordionTrigger>
               <ResourceCardTitle name={jobResource.name} />
             </AccordionTrigger>
