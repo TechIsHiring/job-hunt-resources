@@ -22,7 +22,7 @@ export const JobHuntResourceList = ({
         <AccordionItem key={key} className="border-0" value={`item-${key + 1}`}>
           <Card>
             <AccordionTrigger>
-              <ResourceCardTitle name="Test Job Resource" />
+              <ResourceCardTitle name={jobResource.name} />
             </AccordionTrigger>
             <AccordionContent>
               <ResourceCardBody resourceDetails={jobResource} />
