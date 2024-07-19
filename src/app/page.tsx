@@ -9,6 +9,7 @@ export default function Home() {
             name: "test",
             description: "test",
             url: "test",
+            points: "test",
           },
           {
             name: "test",
