@@ -22,7 +22,7 @@ export const JobHuntResourceList = ({
       {Object.keys(jobResources).map((jobResourceIndex, key) => (
         <section key={key} className="flex flex-col gap-8">
           {key !== 0 && <Divider className="border-slate-300 border-t-[1px]" />}
-          <h2 className="capitalize">{jobResourceIndex}</h2>
+          <h2 className="capitalize font-semibold pl-5">{jobResourceIndex}</h2>
           <Accordion
             type="single"
             collapsible

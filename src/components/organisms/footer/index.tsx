@@ -13,7 +13,7 @@ import {
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col gap-3 p-5 sticky bottom-0">
+    <footer className="flex flex-col gap-3 p-5 bg-black sticky bottom-0">
       <Divider />
       <div className="flex sm:flex-row gap-8 flex-col pt-3 items-center justify-between">
         <Dialog>
