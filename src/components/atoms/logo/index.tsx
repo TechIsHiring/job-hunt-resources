@@ -6,7 +6,7 @@ export const Logo = () => {
       <Link href="https://www.techishiring.com">
         <span className="text-logo">TechIsHiring</span>
       </Link>
-      Job Hunt Resources
+      Job Search Resources
     </h1>
   );
 };
