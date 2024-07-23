@@ -5,8 +5,8 @@ export default async function Home() {
   const resourceData = await getResourceData();
 
   return (
-    <main className="flex flex-col gap-4">
-      <JobHuntResourceList jobResources={resourceData["category name"]} />
+    <main className="flex flex-col gap-12">
+      <JobHuntResourceList jobResources={resourceData} />
     </main>
   );
 }

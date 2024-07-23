@@ -3,5 +3,5 @@ interface ResourceCardTitleProps {
 }
 
 export const ResourceCardTitle = ({ name }: ResourceCardTitleProps) => {
-  return <h2 className="capitalize font-semibold">{name}</h2>;
+  return <h3 className="capitalize font-semibold">{name}</h3>;
 };
