@@ -9,7 +9,7 @@ import {
 
 export const FooterInfo = () => {
   return (
-    <div className="flex flex-col space-y-1">
+    <div className="flex flex-col items-center md:items-end space-y-1">
       <div className="flex items-center justify-end space-x-8 pb-2">
         <a
           target="_blank"
