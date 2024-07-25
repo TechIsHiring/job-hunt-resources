@@ -23,25 +23,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { SubmitJobResource } from "@/lib/types/job-resource-types";
 
 interface AddResourceFormProps {
   categories: string[];
 }
 
-const FormSchema = zod.object({
-  name: zod.string().min(2, "Please add more than two characters.").max(30),
-  url: zod.string().min(2, "Please add more than two characters.").max(30),
-  description: zod
-    .string()
-    .min(30, "Please add more than 30 characters.")
-    .max(400),
-  owner: zod.string().min(2, "Please add more than two characters.").max(30),
-  submitted_by: zod
-    .string()
-    .min(2, "Please add more than two characters.")
-    .max(30),
-  category: zod.string(),
-});
+const FormSchema = SubmitJobResource;
 
 export const AddResourceFormDisplay = ({
   categories,
@@ -57,9 +45,9 @@ export const AddResourceFormDisplay = ({
     },
   });
 
-  function onSubmit(data: zod.infer<typeof FormSchema>) {
+  const onSubmit = (data: zod.infer<typeof FormSchema>) => {
     console.log(data);
-  }
+  };
 
   return (
     <Form {...form}>

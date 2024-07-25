@@ -1,3 +1,5 @@
+import zod from "zod";
+
 export type ResourceData = {
   [key: string]: JobResource[];
 };
@@ -11,3 +13,18 @@ export type JobResource = {
   submitted_by?: string;
   submitted_on?: string;
 };
+
+export const SubmitJobResource = zod.object({
+  name: zod.string().min(2, "Please add more than two characters.").max(30),
+  url: zod.string().min(2, "Please add more than two characters.").max(30),
+  description: zod
+    .string()
+    .min(30, "Please add more than 30 characters.")
+    .max(400),
+  owner: zod.string().min(2, "Please add more than two characters.").max(30),
+  submitted_by: zod
+    .string()
+    .min(2, "Please add more than two characters.")
+    .max(30),
+  category: zod.string(),
+});
