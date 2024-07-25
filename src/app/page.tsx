@@ -1,4 +1,5 @@
 import { JobHuntResourceList } from "@/components/organisms/job-hunt-resource-list";
+import { getObjectKeys } from "@/lib/get-object-keys";
 import { getResourceData } from "@/lib/github-api/get-resource-data";
 
 /* 
@@ -9,10 +10,14 @@ export const revalidate = 3600;
 
 export default async function Home() {
   const resourceData = await getResourceData();
+  const jobResourceObjKeys = getObjectKeys(resourceData);
 
   return (
     <main className="flex flex-col gap-12">
-      <JobHuntResourceList jobResources={resourceData} />
+      <JobHuntResourceList
+        jobResources={resourceData}
+        resourcesObjKey={jobResourceObjKeys}
+      />
     </main>
   );
 }

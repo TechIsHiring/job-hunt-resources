@@ -6,7 +6,7 @@ import { Header } from "@/components/organisms/header";
 import { Footer } from "@/components/organisms/footer";
 
 export const metadata: Metadata = {
-  title: "TechIsHiring Job Hunt Resoures",
+  title: "TechIsHiring Job Search Resoures",
   description:
     "App that has a collection of resources for Tech professionals on the job hunt",
 };

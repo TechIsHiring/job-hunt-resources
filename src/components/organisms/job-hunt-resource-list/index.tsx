@@ -12,14 +12,16 @@ import { Divider } from "@/components/atoms/divider";
 
 interface JobHuntResourceListProps {
   jobResources: ResourceData;
+  resourcesObjKey: string[];
 }
 
 export const JobHuntResourceList = ({
   jobResources,
+  resourcesObjKey,
 }: JobHuntResourceListProps) => {
   return (
     <>
-      {Object.keys(jobResources).map((jobResourceIndex, key) => (
+      {resourcesObjKey.map((jobResourceIndex, key) => (
         <section key={key} className="flex flex-col gap-8">
           <Divider className="border-slate-300 border-t-[1px]" />
           <h2 className="capitalize font-semibold pl-5">{jobResourceIndex}</h2>
