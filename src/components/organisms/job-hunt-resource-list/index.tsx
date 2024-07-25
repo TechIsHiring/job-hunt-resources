@@ -37,7 +37,7 @@ export const JobHuntResourceList = ({
                 value={`item-${key + 1}`}
               >
                 <Card className="hover:bg-slate-500 hover:bg-opacity-35">
-                  <AccordionTrigger>
+                  <AccordionTrigger className="gap-4">
                     <ResourceCardTitle name={jobResource.name} />
                   </AccordionTrigger>
                   <AccordionContent>
