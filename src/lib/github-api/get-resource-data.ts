@@ -1,8 +1,8 @@
-import { Octokit } from "@octokit/core";
 import { ResourceData } from "../types/job-resource-types";
+import { octokitConfig } from "./config";
 
 export const getResourceData = async () => {
-  const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
+  const octokit = octokitConfig;
 
   const githubResponse = await octokit.request(
     "GET /repos/TechIsHiring/job-search-resource-data/contents/resources-data/data.json"
