@@ -3,7 +3,7 @@
 import { DialogFooter } from "@/components/ui/dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import zod from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -28,19 +28,25 @@ interface AddResourceFormProps {
   categories: string[];
 }
 
-const FormSchema = z.object({
-  name: z.any(),
-  url: z.any(),
-  description: z.any(),
-  owner: z.any(),
-  submitted_by: z.any(),
-  category: z.any(),
+const FormSchema = zod.object({
+  name: zod.string().min(2, "Please add more than two characters.").max(30),
+  url: zod.string().min(2, "Please add more than two characters.").max(30),
+  description: zod
+    .string()
+    .min(30, "Please add more than 30 characters.")
+    .max(400),
+  owner: zod.string().min(2, "Please add more than two characters.").max(30),
+  submitted_by: zod
+    .string()
+    .min(2, "Please add more than two characters.")
+    .max(30),
+  category: zod.string(),
 });
 
 export const AddResourceFormDisplay = ({
   categories,
 }: AddResourceFormProps) => {
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<zod.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: "",
@@ -48,11 +54,10 @@ export const AddResourceFormDisplay = ({
       description: "",
       owner: "",
       submitted_by: "",
-      category: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: zod.infer<typeof FormSchema>) {
     console.log(data);
   }
 
@@ -66,7 +71,12 @@ export const AddResourceFormDisplay = ({
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input className="text-black" placeholder="Name" {...field} />
+                <Input
+                  className="text-black"
+                  placeholder="Name"
+                  maxLength={30}
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 The name of the job search resource
@@ -82,7 +92,12 @@ export const AddResourceFormDisplay = ({
             <FormItem>
               <FormLabel>Url</FormLabel>
               <FormControl>
-                <Input className="text-black" placeholder="Url" {...field} />
+                <Input
+                  className="text-black"
+                  placeholder="Url"
+                  maxLength={30}
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 A working url to the job search resource
@@ -101,6 +116,7 @@ export const AddResourceFormDisplay = ({
                 <Textarea
                   placeholder="Description"
                   className="text-black resize-none"
+                  maxLength={400}
                   {...field}
                 />
               </FormControl>
@@ -118,7 +134,12 @@ export const AddResourceFormDisplay = ({
             <FormItem>
               <FormLabel>Owner</FormLabel>
               <FormControl>
-                <Input className="text-black" placeholder="Owner" {...field} />
+                <Input
+                  className="text-black"
+                  placeholder="Owner"
+                  maxLength={30}
+                  {...field}
+                />
               </FormControl>
               <FormDescription>The owner of the resource</FormDescription>
               <FormMessage />
@@ -166,6 +187,7 @@ export const AddResourceFormDisplay = ({
                 <Input
                   className="text-black"
                   placeholder="Your Name"
+                  maxLength={30}
                   {...field}
                 />
               </FormControl>
