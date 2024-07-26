@@ -19,59 +19,6 @@ interface BranchRefResponse {
   };
 }
 
-interface commitResponse {
-  content: {
-    name: string;
-    path: string;
-    sha: string;
-    size: number;
-    url: string;
-    html_url: string;
-    git_url: string;
-    download_url: string;
-    type: string;
-    _links: {
-      self: string;
-      git: string;
-      html: string;
-    };
-  };
-  commit: {
-    sha: string;
-    node_id: string;
-    url: string;
-    html_url: string;
-    author: {
-      date: string;
-      name: string;
-      email: string;
-    };
-    committer: {
-      date: string;
-      name: string;
-      email: string;
-    };
-    message: string;
-    tree: {
-      url: string;
-      sha: string;
-    };
-    parents: [
-      {
-        url: string;
-        html_url: string;
-        sha: string;
-      }
-    ];
-    verification: {
-      verified: boolean;
-      reason: string;
-      signature: null;
-      payload: null;
-    };
-  };
-}
-
 const makeBranchNane = () => {
   const result = crypto.randomUUID();
   result.replace("-", "");
@@ -85,13 +32,12 @@ const createBranch = async (branchName: string) => {
     await octokit.request(`GET ${repoUrl}/git/ref/heads/main`);
   const mainBranchRefSha = mainBranchRefObject.data[0].object.sha;
 
-  const newBranchResponse: OctokitResponse<BranchRefResponse> =
-    await octokit.request(`POST ${repoUrl}/git/refs`, {
-      ref: `refs/heads/${branchName}`,
-      sha: `${mainBranchRefSha}`,
-    });
+  const octoRequestBody = {
+    ref: `refs/heads/${branchName}`,
+    sha: `${mainBranchRefSha}`,
+  };
 
-  return newBranchResponse.data.object.sha;
+  await octokit.request(`POST ${repoUrl}/git/refs`, octoRequestBody);
 };
 
 const prepareCommitData = (
@@ -109,7 +55,7 @@ const prepareCommitData = (
   return dataForCommitRequest;
 };
 
-const createCommitInNewBranch = async (
+const updateDataStoreInNewBranch = async (
   branchName: string,
   currentData: ResourceData,
   formData: SubmitJobResource,
@@ -125,12 +71,10 @@ const createCommitInNewBranch = async (
     sha: fileSha,
   };
 
-  const commitData: OctokitResponse<commitResponse> = await octokit.request(
-    `PUT ${repoUrl}/contents/${datasourceLocation}`,
+  await octokit.request(
+    `PUT ${repoUrl}/contents${datasourceLocation}`,
     octoRequestBody
   );
-
-  return commitData.data.commit.sha;
 };
 
 const createPullRequestFromNewBranchToMain = async (
@@ -156,13 +100,8 @@ export const addResource = async (
   fileSha: string
 ) => {
   const branchName = makeBranchNane();
-  const branchSha = await createBranch(branchName);
-  const commmitSha = await createCommitInNewBranch(
-    branchName,
-    currentData,
-    formData,
-    fileSha
-  );
+  await createBranch(branchName);
+  await updateDataStoreInNewBranch(branchName, currentData, formData, fileSha);
   await createPullRequestFromNewBranchToMain(
     branchName,
     formData.submitted_by,
