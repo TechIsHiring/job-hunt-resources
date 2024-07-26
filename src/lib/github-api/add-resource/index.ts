@@ -1,9 +1,11 @@
 "use server";
 
-import { SubmitJobResource } from "@/lib/types/job-resource-types";
-import zod from "zod";
+import {
+  ResourceData,
+  SubmitJobResource,
+} from "@/lib/types/job-resource-types";
 import crypto from "crypto";
-import { octokitConfig, repoUrl } from "../config";
+import { datasourceLocation, octokitConfig, repoUrl } from "../config";
 import { OctokitResponse } from "@octokit/types";
 
 interface BranchRefResponse {
@@ -14,6 +16,59 @@ interface BranchRefResponse {
     type: string;
     sha: string;
     url: string;
+  };
+}
+
+interface commitResponse {
+  content: {
+    name: string;
+    path: string;
+    sha: string;
+    size: number;
+    url: string;
+    html_url: string;
+    git_url: string;
+    download_url: string;
+    type: string;
+    _links: {
+      self: string;
+      git: string;
+      html: string;
+    };
+  };
+  commit: {
+    sha: string;
+    node_id: string;
+    url: string;
+    html_url: string;
+    author: {
+      date: string;
+      name: string;
+      email: string;
+    };
+    committer: {
+      date: string;
+      name: string;
+      email: string;
+    };
+    message: string;
+    tree: {
+      url: string;
+      sha: string;
+    };
+    parents: [
+      {
+        url: string;
+        html_url: string;
+        sha: string;
+      }
+    ];
+    verification: {
+      verified: boolean;
+      reason: string;
+      signature: null;
+      payload: null;
+    };
   };
 }
 
@@ -36,9 +91,44 @@ const createBranch = async (branchName: string) => {
   return newBranchResponse.data.object.sha;
 };
 
+const createCommit = async (
+  branchName: string,
+  currentData: ResourceData,
+  formData: SubmitJobResource
+) => {
+  const octokit = octokitConfig;
+  const tempDataStore: ResourceData = JSON.parse(JSON.stringify(currentData));
+  const { category, ...rest } = formData;
+  const dataToInsert = rest;
+
+  tempDataStore[formData.category].push(dataToInsert);
+  const dataForCommitRequest = Buffer.from(
+    JSON.stringify(tempDataStore)
+  ).toString("base64");
+
+  const fileData: OctokitResponse<{ sha: string }> = await octokit.request(
+    `GET ${repoUrl}/contents${datasourceLocation}`
+  );
+  const fileSha = fileData.data.sha;
+  const octoRequestBody = {
+    content: dataForCommitRequest,
+    message: `${dataToInsert.submitted_by}'s admission request for ${dataToInsert.name}`,
+    branch: branchName,
+    sha: fileSha,
+  };
+  const commitData: OctokitResponse<commitResponse> = await octokit.request(
+    `PUT ${repoUrl}/contents/${datasourceLocation}`,
+    octoRequestBody
+  );
+  return commitData.data.commit.sha;
+};
+
 export const addResource = async (
-  data: zod.infer<typeof SubmitJobResource>
+  currentData: ResourceData,
+  formData: SubmitJobResource
 ) => {
   const branchName = makeBranchNane();
   const branchSha = await createBranch(branchName);
+
+  const commmitSha = await createCommit(branchName, currentData, formData);
 };

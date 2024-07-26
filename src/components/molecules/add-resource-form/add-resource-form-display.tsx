@@ -23,13 +23,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SubmitJobResource } from "@/lib/types/job-resource-types";
+import { SubmitJobResourceZodSchema } from "@/lib/types/job-resource-types";
 
 interface AddResourceFormProps {
   categories: string[];
 }
 
-const FormSchema = SubmitJobResource;
+const FormSchema = SubmitJobResourceZodSchema;
 
 export const AddResourceFormDisplay = ({
   categories,
