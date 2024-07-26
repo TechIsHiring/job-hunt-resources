@@ -91,44 +91,57 @@ const createBranch = async (branchName: string) => {
   return newBranchResponse.data.object.sha;
 };
 
-const createCommit = async (
-  branchName: string,
+const prepareCommitData = (
   currentData: ResourceData,
   formData: SubmitJobResource
 ) => {
-  const octokit = octokitConfig;
   const tempDataStore: ResourceData = JSON.parse(JSON.stringify(currentData));
   const { category, ...rest } = formData;
   const dataToInsert = rest;
 
-  tempDataStore[formData.category].push(dataToInsert);
+  tempDataStore[category].push(dataToInsert);
   const dataForCommitRequest = Buffer.from(
     JSON.stringify(tempDataStore)
   ).toString("base64");
+  return dataForCommitRequest;
+};
 
-  const fileData: OctokitResponse<{ sha: string }> = await octokit.request(
-    `GET ${repoUrl}/contents${datasourceLocation}`
-  );
-  const fileSha = fileData.data.sha;
+const createCommit = async (
+  branchName: string,
+  currentData: ResourceData,
+  formData: SubmitJobResource,
+  fileSha: string
+) => {
+  const dataForCommitRequest = prepareCommitData(currentData, formData);
+  const octokit = octokitConfig;
+
   const octoRequestBody = {
     content: dataForCommitRequest,
-    message: `${dataToInsert.submitted_by}'s admission request for ${dataToInsert.name}`,
+    message: `${formData.submitted_by}'s admission request for ${formData.name}`,
     branch: branchName,
     sha: fileSha,
   };
+
   const commitData: OctokitResponse<commitResponse> = await octokit.request(
     `PUT ${repoUrl}/contents/${datasourceLocation}`,
     octoRequestBody
   );
+
   return commitData.data.commit.sha;
 };
 
 export const addResource = async (
   currentData: ResourceData,
-  formData: SubmitJobResource
+  formData: SubmitJobResource,
+  fileSha: string
 ) => {
   const branchName = makeBranchNane();
   const branchSha = await createBranch(branchName);
 
-  const commmitSha = await createCommit(branchName, currentData, formData);
+  const commmitSha = await createCommit(
+    branchName,
+    currentData,
+    formData,
+    fileSha
+  );
 };

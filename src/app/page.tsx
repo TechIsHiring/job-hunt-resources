@@ -9,7 +9,7 @@ import { getResourceData } from "@/lib/github-api/get-resource-data";
 export const revalidate = 3600;
 
 export default async function Home() {
-  const resourceData = await getResourceData();
+  const { resourceData } = await getResourceData();
   const jobResourceObjKeys = getObjectKeys(resourceData);
 
   return (
