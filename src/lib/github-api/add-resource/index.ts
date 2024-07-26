@@ -80,14 +80,17 @@ const makeBranchNane = () => {
 
 const createBranch = async (branchName: string) => {
   const octokit = octokitConfig;
+
   const mainBranchRefObject: OctokitResponse<BranchRefResponse[]> =
     await octokit.request(`GET ${repoUrl}/git/ref/heads/main`);
   const mainBranchRefSha = mainBranchRefObject.data[0].object.sha;
+
   const newBranchResponse: OctokitResponse<BranchRefResponse> =
     await octokit.request(`POST ${repoUrl}/git/refs`, {
       ref: `refs/heads/${branchName}`,
       sha: `${mainBranchRefSha}`,
     });
+
   return newBranchResponse.data.object.sha;
 };
 
@@ -106,7 +109,7 @@ const prepareCommitData = (
   return dataForCommitRequest;
 };
 
-const createCommit = async (
+const createCommitInNewBranch = async (
   branchName: string,
   currentData: ResourceData,
   formData: SubmitJobResource,
@@ -117,7 +120,7 @@ const createCommit = async (
 
   const octoRequestBody = {
     content: dataForCommitRequest,
-    message: `${formData.submitted_by}'s admission request for ${formData.name}`,
+    message: `${formData.submitted_by}'s addition request for ${formData.name}`,
     branch: branchName,
     sha: fileSha,
   };
@@ -130,6 +133,23 @@ const createCommit = async (
   return commitData.data.commit.sha;
 };
 
+const createPullRequestFromNewBranchToMain = async (
+  branchName: string,
+  submittorName: string,
+  resourceName: string
+) => {
+  const octokit = octokitConfig;
+
+  const octoRequestBody = {
+    head: branchName,
+    base: "main",
+    title: `${submittorName}'s addition request for ${resourceName}`,
+    body: `${submittorName} has requested that add '${resourceName}' to the list of job search resources.`,
+  };
+
+  await octokit.request(`POST ${repoUrl}/pulls`, octoRequestBody);
+};
+
 export const addResource = async (
   currentData: ResourceData,
   formData: SubmitJobResource,
@@ -137,11 +157,15 @@ export const addResource = async (
 ) => {
   const branchName = makeBranchNane();
   const branchSha = await createBranch(branchName);
-
-  const commmitSha = await createCommit(
+  const commmitSha = await createCommitInNewBranch(
     branchName,
     currentData,
     formData,
     fileSha
+  );
+  await createPullRequestFromNewBranchToMain(
+    branchName,
+    formData.submitted_by,
+    formData.name
   );
 };
