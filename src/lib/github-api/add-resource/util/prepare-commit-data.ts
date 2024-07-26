@@ -9,7 +9,8 @@ export const prepareCommitData = (
 ) => {
   const tempDataStore: ResourceData = JSON.parse(JSON.stringify(currentData));
   const { category, ...rest } = formData;
-  const dataToInsert = rest;
+  const dateOfSubmission = new Date(Date.now()).toUTCString();
+  const dataToInsert = { ...rest, submitted_on: dateOfSubmission };
 
   tempDataStore[category].push(dataToInsert);
   const dataForCommitRequest = Buffer.from(
