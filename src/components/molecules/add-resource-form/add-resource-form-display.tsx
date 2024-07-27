@@ -27,12 +27,14 @@ import { SubmitJobResourceZodSchema } from "@/lib/types/job-resource-types";
 
 interface AddResourceFormProps {
   categories: string[];
+  handleFormSubmittion: (data: zod.infer<typeof FormSchema>) => Promise<void>;
 }
 
 const FormSchema = SubmitJobResourceZodSchema;
 
 export const AddResourceFormDisplay = ({
   categories,
+  handleFormSubmittion,
 }: AddResourceFormProps) => {
   const form = useForm<zod.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -45,8 +47,8 @@ export const AddResourceFormDisplay = ({
     },
   });
 
-  const onSubmit = (data: zod.infer<typeof FormSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: zod.infer<typeof FormSchema>) => {
+    await handleFormSubmittion(data);
   };
 
   return (

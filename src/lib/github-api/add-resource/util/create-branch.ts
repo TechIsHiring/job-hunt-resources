@@ -15,9 +15,9 @@ interface BranchRefResponse {
 export const createBranch = async (branchName: string) => {
   const octokit = octokitConfig;
 
-  const mainBranchRefObject: OctokitResponse<BranchRefResponse[]> =
+  const mainBranchRefObject: OctokitResponse<BranchRefResponse> =
     await octokit.request(`GET ${repoUrl}/git/ref/heads/main`);
-  const mainBranchRefSha = mainBranchRefObject.data[0].object.sha;
+  const mainBranchRefSha = mainBranchRefObject.data.object.sha;
 
   const octoRequestBody = {
     ref: `refs/heads/${branchName}`,
