@@ -1,6 +1,6 @@
 import { JobHuntResourceList } from "@/components/organisms/job-hunt-resource-list";
 import { getObjectKeys } from "@/lib/get-object-keys";
-import { getResourceData } from "@/lib/github-api/get-resource-data";
+import { getResourceData } from "@/lib/github-api/get-resource-data/";
 
 /* 
   Sets revalidation for all requests in Next.js' App Router for this route segment to be an hour:

@@ -1,8 +1,12 @@
 "use server";
 
 import { OctokitResponse } from "@octokit/types";
-import { ResourceData } from "../types/job-resource-types";
-import { datasourceLocation, octokitConfig, repoUrl } from "./config";
+import { ResourceData } from "@/lib/types/job-resource-types";
+import {
+  datasourceLocation,
+  octokitConfig,
+  repoUrl,
+} from "@/lib/github-api/config";
 
 export const getResourceData = async () => {
   const octokit = octokitConfig;
