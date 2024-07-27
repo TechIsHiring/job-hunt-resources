@@ -14,7 +14,7 @@ export const prepareCommitData = (
 
   tempDataStore[category].push(dataToInsert);
   const dataForCommitRequest = Buffer.from(
-    JSON.stringify(tempDataStore)
+    JSON.stringify(tempDataStore, null, 2)
   ).toString("base64");
   return dataForCommitRequest;
 };
