@@ -23,9 +23,11 @@ export const ResourceCardBody = ({
                 className="lg:w-[calc(25%-16px)] md:w-[calc(50%-16px)] w-full"
                 key={mapKey}
               >
-                <Card>
+                <Card className="min-h-[66px]">
                   {objectKey !== "link" && (
-                    <span className="capitalize">{objectKey}: </span>
+                    <span className="capitalize">
+                      {objectKey.replace("_", " ")}:{" "}
+                    </span>
                   )}
                   {objectKey === "link" ? (
                     <a
@@ -41,10 +43,14 @@ export const ResourceCardBody = ({
                           iconAlt={`external link to ${resourceDetails.name}`}
                         />
                       </span>
-                      <p className="text-ellipsis overflow-hidden">
+                      <p className="text-ellipsis truncate">
                         {resourceDetails[objectKey]}
                       </p>
                     </a>
+                  ) : objectKey === "submitted_on" ? (
+                    new Date(
+                      `${resourceDetails[objectKey]}`
+                    ).toLocaleDateString()
                   ) : (
                     resourceDetails[objectKey]
                   )}
