@@ -20,7 +20,10 @@ const config = {
     extend: {
       colors: {
         logo: "#2188e7",
-        background: "var(--background-start-colour)",
+        bgdarkmode: "#0e1217",
+        fgdarkmode: "#fff",
+        bglightmode: "#fff",
+        fglightmode: "#0e1217",
       },
       fontFamily: {
         logo: ['"HirukoPro-Black"'],
