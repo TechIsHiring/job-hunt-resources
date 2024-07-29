@@ -11,30 +11,6 @@
   }
 }
 
-:root {
-  --foreground-colour: #000;
-  --background-start-colour: #d6dbdc;
-  --background-end-colour: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-colour: #fff;
-    --background-start-colour: #0e1217;
-    --background-end-colour: #0e1217;
-  }
-}
-
-body {
-  color: var(--foreground-colour);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--background-end-colour)
-    )
-    var(--background-start-colour);
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

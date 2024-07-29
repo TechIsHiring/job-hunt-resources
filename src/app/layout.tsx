@@ -5,6 +5,7 @@ import { MainLayoutCard } from "@/components/atoms/card";
 import { Header } from "@/components/organisms/header";
 import { Footer } from "@/components/organisms/footer";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "@/components/particles/theme-provider";
 
 export const metadata: Metadata = {
   title: "TechIsHiring Job Search Resoures",
@@ -20,15 +21,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <HomePageLayout>
-          <MainLayoutCard>
-            <div className="flex flex-col gap-4 pt-5">
-              <Header />
-              {children}
-            </div>
-            <Footer />
-          </MainLayoutCard>
-        </HomePageLayout>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <HomePageLayout>
+            <MainLayoutCard>
+              <div className="flex flex-col gap-4 pt-5">
+                <Header />
+                {children}
+              </div>
+              <Footer />
+            </MainLayoutCard>
+          </HomePageLayout>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
