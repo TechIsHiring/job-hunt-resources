@@ -4,6 +4,7 @@ import { HomePageLayout } from "@/components/templates/homepagelayout";
 import { MainLayoutCard } from "@/components/atoms/card";
 import { Header } from "@/components/organisms/header";
 import { Footer } from "@/components/organisms/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "TechIsHiring Job Search Resoures",
@@ -28,6 +29,7 @@ export default function RootLayout({
             <Footer />
           </MainLayoutCard>
         </HomePageLayout>
+        <Analytics />
       </body>
     </html>
   );
