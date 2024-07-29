@@ -20,6 +20,7 @@ const config = {
     extend: {
       colors: {
         logo: "#2188e7",
+        background: "var(--background-start-colour)",
       },
       fontFamily: {
         logo: ['"HirukoPro-Black"'],
