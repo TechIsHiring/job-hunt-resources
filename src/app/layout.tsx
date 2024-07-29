@@ -21,7 +21,7 @@ export default function RootLayout({
       <body>
         <HomePageLayout>
           <MainLayoutCard>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 pt-5">
               <Header />
               {children}
             </div>
