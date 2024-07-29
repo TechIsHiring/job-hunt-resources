@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TechIsHiring Job Search Resources
 
-## Getting Started
+A small app listing job search resources for tech professionals separated by category, providing key information as well as links to view the resource. Inspired by [confs.tech](https://www.confs.tech) ([GitHub Repo](https://github.com/tech-conferences/confs.tech/))
 
-First, run the development server:
+## Atomic Design
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project uses Atomic Design for it's Components. Here are several resources for Atomic Design if you are unfamiliar:
+
+- [Atomic Design by Brad Frost](https://bradfrost.com/blog/post/atomic-web-design/)
+- [Atomic Design - How To Make Web and UI Design Easier](https://www.youtube.com/watch?v=W3A33dmp17E)
+
+## Local development
+
+To install the application:
+
+```shell
+npm ci
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run the application on a developement server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Code linting
 
-## Learn More
+To check the code and styles quality, use the following command:
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Production deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Run this command to build the project.
 
-## Deploy on Vercel
+```shell
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out the [CONTRIBUTING.md](CONTRIBUTING.md) guide to assist with all you need to know before getting started with making changes to the codebase.
+
+## License
+
+[MIT License](LICENSE)

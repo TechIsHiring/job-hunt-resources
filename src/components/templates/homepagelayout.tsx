@@ -4,6 +4,8 @@ interface HomePageLayoutProps {
 
 export const HomePageLayout: React.FC<HomePageLayoutProps> = ({ children }) => {
   return (
-    <div className="flex w-full h-screen justify-center px-10">{children}</div>
+    <div className="flex w-full min-h-full justify-center px-10">
+      {children}
+    </div>
   );
 };
