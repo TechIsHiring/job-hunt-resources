@@ -20,7 +20,7 @@ export const ResourceCardBody = ({
           {Object.keys(resourceDetails).map((objectKey, mapKey) =>
             objectKey !== "name" && objectKey !== "description" ? (
               <div
-                className="lg:min-w-[calc(25%-32px)] md:min-w-[calc(50%-16px)] min-w-full"
+                className="lg:w-[calc(25%-16px)] md:w-[calc(50%-16px)] w-full"
                 key={mapKey}
               >
                 <Card>
@@ -34,12 +34,16 @@ export const ResourceCardBody = ({
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Link to Resource
-                      <Icon
-                        Icon={FiExternalLink}
-                        color="white"
-                        iconAlt={`external link to ${resourceDetails.name}`}
-                      />{" "}
+                      <span className="h-6 w-6">
+                        <Icon
+                          Icon={FiExternalLink}
+                          color="white"
+                          iconAlt={`external link to ${resourceDetails.name}`}
+                        />
+                      </span>
+                      <p className="text-ellipsis overflow-hidden">
+                        {resourceDetails[objectKey]}
+                      </p>
                     </a>
                   ) : (
                     resourceDetails[objectKey]
