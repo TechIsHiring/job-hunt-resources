@@ -19,7 +19,6 @@ export const FooterInfo = () => {
           <Icon
             icon={SiTwitter}
             iconAlt="Twitter for Tech Is Hiring"
-            color="white"
             size={20}
           />
         </a>
@@ -28,12 +27,7 @@ export const FooterInfo = () => {
           rel="noreferrer"
           href="https://www.github.com/techishiring"
         >
-          <Icon
-            icon={SiGithub}
-            iconAlt="GitHub for Tech Is Hiring"
-            color="white"
-            size={20}
-          />
+          <Icon icon={SiGithub} iconAlt="GitHub for Tech Is Hiring" size={20} />
         </a>
         <a
           target="_blank"
@@ -43,7 +37,6 @@ export const FooterInfo = () => {
           <Icon
             icon={SiLinkedin}
             iconAlt="LinkedIn for Tech Is Hiring"
-            color="white"
             size={20}
           />
         </a>
@@ -55,7 +48,6 @@ export const FooterInfo = () => {
           <Icon
             icon={SiPatreon}
             iconAlt="Patreon for Tech Is Hiring"
-            color="white"
             size={20}
           />
         </a>
@@ -67,7 +59,6 @@ export const FooterInfo = () => {
           <Icon
             icon={SiSubstack}
             iconAlt="Tech Is Hiring Newsletter on Substack"
-            color="white"
             size={20}
           />
         </a>

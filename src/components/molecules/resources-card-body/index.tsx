@@ -39,7 +39,6 @@ export const ResourceCardBody = ({
                       <span className="h-6 w-6">
                         <Icon
                           icon={FiExternalLink}
-                          color="white"
                           iconAlt={`external link to ${resourceDetails.name}`}
                         />
                       </span>
