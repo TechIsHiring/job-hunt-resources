@@ -6,7 +6,7 @@ interface IconProps {
   iconAlt: string;
   className?: string;
   size?: number;
-  onClick?: (args: unknown) => unknown;
+  onClick?: (...args: Parameters<any>) => unknown;
 }
 
 export const Icon = ({
