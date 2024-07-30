@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select";
 import { SubmitJobResourceZodSchema } from "@/lib/types/job-resource-types";
 import { useState } from "react";
+import { AddResourceFormAltState } from "../add-resource-form-alt-state";
 
 interface AddResourceFormProps {
   categories: string[];
@@ -214,8 +215,12 @@ export const AddResourceFormDisplay = ({
             </form>
           </Form>
         ))}
-      {submissionState === "submitting" && <div>Submitting...</div>}
-      {submissionState === "submit-complete" && <div>Submittion Copmlete!</div>}
+      {submissionState === "submitting" && (
+        <AddResourceFormAltState submitting />
+      )}
+      {submissionState === "submit-complete" && (
+        <AddResourceFormAltState complete />
+      )}
     </>
   );
 };
