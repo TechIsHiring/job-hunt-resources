@@ -1,3 +1,7 @@
+import { Icon } from "@/components/atoms/icon";
+import { LoadingSpinner } from "@/components/atoms/loading-spinner";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+
 type AddResourceFormAltStateProps =
   | {
       submitting: boolean;
@@ -16,12 +20,16 @@ export const AddResourceFormAltState = ({
     <>
       {submitting && (
         <div className="flex items-center justify-center h-screen sm:min-h-96">
-          Submitting...
+          <LoadingSpinner />
         </div>
       )}
       {complete && (
         <div className="flex items-center justify-center h-screen sm:min-h-96">
-          Submission Copmlete!
+          <Icon
+            icon={IoIosCheckmarkCircleOutline}
+            iconAlt="Submission Complete Checkmark Icon"
+            className="!text-green-500 dark:!text-green-500"
+          />
         </div>
       )}
     </>
