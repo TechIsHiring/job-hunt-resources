@@ -1,24 +1,27 @@
+import { cn } from "@/lib/shadcn-ui/utils";
 import { IconType } from "react-icons";
 
 interface IconProps {
   icon: IconType;
   iconAlt: string;
+  className?: string;
   size?: number;
-  color?: string;
+  onClick?: (args: unknown) => unknown;
 }
 
 export const Icon = ({
   icon: Icon,
   iconAlt,
+  className,
+  onClick,
   size = 24,
-  color = "#000",
 }: IconProps) => {
   return (
     <Icon
-      className="!text-fglightmode dark:!text-fgdarkmode"
+      className={cn("!text-fglightmode dark:!text-fgdarkmode", className)}
       size={size}
       title={iconAlt}
-      color={color}
+      onClick={onClick}
     />
   );
 };

@@ -22,7 +22,6 @@ export const CategoryIcon = ({ categoryTitle }: CategoryIconProps) => {
       icon={categoryIcons[categoryTitle]}
       iconAlt={`Icon for ${categoryTitle} category`}
       size={24}
-      color="white"
     />
   );
 };
