@@ -21,7 +21,7 @@ export const JobHuntResourceList = ({
   resourcesObjKey,
 }: JobHuntResourceListProps) => {
   return (
-    <>
+    <Accordion type="single" collapsible className="flex flex-col gap-6 w-full">
       {resourcesObjKey.map((jobResourceIndex, key) => (
         <section key={key} className="flex flex-col gap-8">
           <Divider className="border-fglightmode/60 dark:border-slate-300 border-t-[1px]" />
@@ -29,16 +29,12 @@ export const JobHuntResourceList = ({
             <CategoryIcon categoryTitle={jobResourceIndex} />
             <h2 className="capitalize font-semibold">{jobResourceIndex}</h2>
           </span>
-          <Accordion
-            type="single"
-            collapsible
-            className="flex flex-col gap-6 w-full"
-          >
+          <div className="flex flex-col gap-6 w-full">
             {jobResources[jobResourceIndex].map((jobResource, key) => (
               <AccordionItem
                 key={key}
                 className="border-0"
-                value={`item-${key + 1}`}
+                value={`${jobResourceIndex}-${key + 1}`}
               >
                 <Card>
                   <AccordionTrigger className="gap-4">
@@ -50,9 +46,9 @@ export const JobHuntResourceList = ({
                 </Card>
               </AccordionItem>
             ))}
-          </Accordion>
+          </div>
         </section>
       ))}
-    </>
+    </Accordion>
   );
 };
