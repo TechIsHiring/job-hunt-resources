@@ -38,14 +38,12 @@ export const AddResourceFormDisplay = ({
   categories,
   handleFormSubmittion,
 }: AddResourceFormProps) => {
-  type SubmissionState =
-    | "not-submitted"
-    | "submitting"
-    | "submit-complete"
-    | "submit-error";
+  type SubmissionState = "not-submitted" | "submitting" | "submit-complete";
 
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("not-submitted");
+
+  const [submitError, setSubmitError] = useState(false);
 
   const form = useForm<zod.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -64,7 +62,8 @@ export const AddResourceFormDisplay = ({
       await handleFormSubmittion(data);
       setSubmissionState("submit-complete");
     } catch (error) {
-      setSubmissionState("submit-error");
+      setSubmitError(true);
+      setSubmissionState("not-submitted");
     }
   };
 
@@ -73,6 +72,11 @@ export const AddResourceFormDisplay = ({
       {submissionState === "not-submitted" && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            {submitError && (
+              <span className="text-red-600">
+                Something went wrong with the submission. Please try again.
+              </span>
+            )}
             <FormField
               control={form.control}
               name="name"
