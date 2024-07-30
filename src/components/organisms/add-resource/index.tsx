@@ -13,9 +13,9 @@ export const AddResource = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-fit">+ Add a Resource</Button>
+        <Button className="w-fit text-white">+ Add a Resource</Button>
       </DialogTrigger>
-      <DialogContent className="bg-black sm:max-w-[600px] border-0 sm:border overflow-y-auto max-h-screen">
+      <DialogContent className="sm:max-w-[600px] border-0 sm:border overflow-y-auto max-h-screen">
         <DialogHeader className="flex flex-col gap-4 ">
           <DialogTitle>Add a Tech Job Search Resource</DialogTitle>
           <DialogDescription>
