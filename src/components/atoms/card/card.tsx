@@ -9,7 +9,7 @@ export const Card = (props: CardProps) => {
     <article
       {...props}
       className={cn(
-        "border rounded-lg min-w-full p-5 min-h-10 justify-center",
+        "border border-fglightmode dark:border-fgdarkmode rounded-lg min-w-full p-5 min-h-10 justify-center",
         props.className
       )}
     >
