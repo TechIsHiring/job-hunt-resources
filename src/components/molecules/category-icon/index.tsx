@@ -19,7 +19,7 @@ export const CategoryIcon = ({ categoryTitle }: CategoryIconProps) => {
 
   return (
     <Icon
-      Icon={categoryIcons[categoryTitle]}
+      icon={categoryIcons[categoryTitle]}
       iconAlt={`Icon for ${categoryTitle} category`}
       size={24}
       color="white"

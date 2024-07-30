@@ -17,7 +17,7 @@ export const FooterInfo = () => {
           href="https://www.twitter.com/techishiring"
         >
           <Icon
-            Icon={SiTwitter}
+            icon={SiTwitter}
             iconAlt="Twitter for Tech Is Hiring"
             color="white"
             size={20}
@@ -29,7 +29,7 @@ export const FooterInfo = () => {
           href="https://www.github.com/techishiring"
         >
           <Icon
-            Icon={SiGithub}
+            icon={SiGithub}
             iconAlt="GitHub for Tech Is Hiring"
             color="white"
             size={20}
@@ -41,7 +41,7 @@ export const FooterInfo = () => {
           href="https://www.linkedin.com/company/techishiring"
         >
           <Icon
-            Icon={SiLinkedin}
+            icon={SiLinkedin}
             iconAlt="LinkedIn for Tech Is Hiring"
             color="white"
             size={20}
@@ -53,7 +53,7 @@ export const FooterInfo = () => {
           href="https://www.patreon.com/techishiring"
         >
           <Icon
-            Icon={SiPatreon}
+            icon={SiPatreon}
             iconAlt="Patreon for Tech Is Hiring"
             color="white"
             size={20}
@@ -65,14 +65,14 @@ export const FooterInfo = () => {
           href="https://newsletter.techishiring.com/"
         >
           <Icon
-            Icon={SiSubstack}
+            icon={SiSubstack}
             iconAlt="Tech Is Hiring Newsletter on Substack"
             color="white"
             size={20}
           />
         </a>
       </div>
-      <p className="text-right font-inter text-xs font-medium text-white lg:text-sm">
+      <p className="text-right font-inter text-xs font-medium lg:text-sm">
         {`© Copyright ${new Date().getFullYear()}, All rights reserved.`}
       </p>
     </div>
