@@ -24,7 +24,7 @@ export const JobHuntResourceList = ({
     <>
       {resourcesObjKey.map((jobResourceIndex, key) => (
         <section key={key} className="flex flex-col gap-8">
-          <Divider className="border-slate-300 border-t-[1px]" />
+          <Divider className="border-fglightmode/60 dark:border-slate-300 border-t-[1px]" />
           <span className="flex gap-4 px-2">
             <CategoryIcon categoryTitle={jobResourceIndex} />
             <h2 className="capitalize font-semibold">{jobResourceIndex}</h2>

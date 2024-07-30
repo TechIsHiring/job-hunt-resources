@@ -13,7 +13,7 @@ export const ResourceCardBody = ({
 }: ResourceCardBodyProps) => {
   return (
     <div className="flex flex-col gap-4">
-      <Divider className="border-slate-300 border-t-[1px]" />
+      <Divider className="border-fglightmode/60 dark:border-slate-300  border-t-[1px]" />
       <div className="flex flex-col gap-4">
         <p className="w-full">Description: {resourceDetails.description}</p>
         <div className="flex items-center flex-wrap gap-4">
