@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/particles/theme-provider";
 
 export const metadata: Metadata = {
-  title: "TechIsHiring Job Search Resoures",
+  title: "TechIsHiring Job Search Resources",
   description:
     "App that has a collection of resources for Tech professionals on the job hunt",
 };
