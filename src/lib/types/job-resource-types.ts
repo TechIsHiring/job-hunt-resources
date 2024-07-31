@@ -15,7 +15,7 @@ export type JobResource = {
 };
 
 export const SubmitJobResourceZodSchema = zod.object({
-  name: zod.string().min(2, "Please add more than two characters.").max(30),
+  name: zod.string().min(2, "Please add more than two characters.").max(150),
   url: zod.string().url({ message: "Please enter a valid url." }),
   description: zod
     .string()
