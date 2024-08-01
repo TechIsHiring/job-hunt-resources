@@ -49,6 +49,7 @@ export const AddResourceFormDisplay = ({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       name: "",
+      outline: "",
       url: "",
       description: "",
       owner: "",
@@ -93,6 +94,27 @@ export const AddResourceFormDisplay = ({
                   </FormControl>
                   <FormDescription>
                     The name of the job search resource
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="outline"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Outline</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-black bg-white dark:text-black dark:bg-white border-slate-600"
+                      placeholder="Outline"
+                      maxLength={30}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    A synopsis (short description) of the resource y{" "}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

@@ -7,6 +7,7 @@ export type ResourceData = {
 export type JobResource = {
   [key: string]: string | undefined;
   name: string;
+  outline: string;
   url: string;
   description: string;
   owner?: string;
@@ -16,6 +17,10 @@ export type JobResource = {
 
 export const SubmitJobResourceZodSchema = zod.object({
   name: zod
+    .string()
+    .min(2, "Please add more than two characters.")
+    .max(150, "Please keep your entry to less than 150 characters."),
+  outline: zod
     .string()
     .min(2, "Please add more than two characters.")
     .max(150, "Please keep your entry to less than 150 characters."),
