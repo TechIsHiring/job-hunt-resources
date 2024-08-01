@@ -114,7 +114,7 @@ export const AddResourceFormDisplay = ({
                     />
                   </FormControl>
                   <FormDescription>
-                    A synopsis (short description) of the resource y{" "}
+                    A synopsis (short description) of the resource
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

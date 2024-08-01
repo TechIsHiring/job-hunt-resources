@@ -18,7 +18,9 @@ export const ResourceCardBody = ({
         <p className="w-full">Description: {resourceDetails.description}</p>
         <div className="flex items-center flex-wrap gap-4">
           {Object.keys(resourceDetails).map((objectKey, mapKey) =>
-            objectKey !== "name" && objectKey !== "description" ? (
+            objectKey !== "name" &&
+            objectKey !== "description" &&
+            objectKey !== "outline" ? (
               <div
                 className="lg:w-[calc(25%-16px)] md:w-[calc(50%-16px)] w-full"
                 key={mapKey}
