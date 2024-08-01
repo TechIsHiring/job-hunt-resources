@@ -38,7 +38,10 @@ export const JobHuntResourceList = ({
               >
                 <Card>
                   <AccordionTrigger className="gap-4">
-                    <ResourceCardTitle name={jobResource.name} />
+                    <ResourceCardTitle
+                      name={jobResource.name}
+                      outline={jobResource.outline}
+                    />
                   </AccordionTrigger>
                   <AccordionContent>
                     <ResourceCardBody resourceDetails={jobResource} />
