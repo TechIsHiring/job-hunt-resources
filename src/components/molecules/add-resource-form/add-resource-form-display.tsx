@@ -29,7 +29,7 @@ import { AddResourceFormAltState } from "../add-resource-form-alt-state";
 
 interface AddResourceFormProps {
   categories: string[];
-  handleFormSubmittion: (data: zod.infer<typeof FormSchema>) => Promise<void>;
+  handleFormSubmittion: (data: zod.infer<typeof FormSchema>) => Promise<string>;
 }
 
 const FormSchema = SubmitJobResourceZodSchema;
@@ -44,6 +44,8 @@ export const AddResourceFormDisplay = ({
     useState<SubmissionState>("not-submitted");
 
   const [submitError, setSubmitError] = useState(false);
+
+  const [pullRequestUrl, setPullRequestUrl] = useState("");
 
   const form = useForm<zod.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -60,7 +62,8 @@ export const AddResourceFormDisplay = ({
   const onSubmit = async (data: zod.infer<typeof FormSchema>) => {
     try {
       setSubmissionState("submitting");
-      await handleFormSubmittion(data);
+      const returnedUrl = await handleFormSubmittion(data);
+      setPullRequestUrl(returnedUrl);
       setSubmissionState("submit-complete");
     } catch (error) {
       setSubmitError(true);
@@ -247,7 +250,7 @@ export const AddResourceFormDisplay = ({
         <AddResourceFormAltState submitting />
       )}
       {submissionState === "submit-complete" && (
-        <AddResourceFormAltState complete />
+        <AddResourceFormAltState complete pullRequestUrl={pullRequestUrl} />
       )}
     </>
   );

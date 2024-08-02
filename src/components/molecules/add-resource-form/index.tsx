@@ -16,9 +16,10 @@ export const AddResourceForm = async () => {
 
     try {
       const validatedFormData = SubmitJobResourceZodSchema.parse(formData);
-      await addResource(resourceData, validatedFormData, fileSha);
+      return await addResource(resourceData, validatedFormData, fileSha);
     } catch (error) {
       console.log(error);
+      return "";
     }
   };
 

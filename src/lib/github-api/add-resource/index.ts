@@ -15,7 +15,7 @@ export const addResource = async (
   const branchName = makeBranchName();
   await createBranch(branchName);
   await updateDataStoreInNewBranch(branchName, currentData, formData, fileSha);
-  await createPullRequestFromNewBranchToMain(
+  return await createPullRequestFromNewBranchToMain(
     branchName,
     formData.submitted_by,
     formData.name
