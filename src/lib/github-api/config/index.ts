@@ -10,6 +10,6 @@ export const octokitConfig = new Octokit({
   request: { fetch: customFetchWrapper },
 });
 
-export const repoUrl = "/repos/TechIsHiring/job-search-resource-data";
+export const repoUrl = process.env.GITHUB_REPO_ADDRESS;
 
-export const datasourceLocation = "/resources-data/data.json";
+export const datasourceLocation = process.env.GITHUB_REPO_DATA_LOCATION;
