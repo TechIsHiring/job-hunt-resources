@@ -25,7 +25,7 @@ export const ResourceCardBody = ({
                 className="lg:w-[calc(25%-16px)] md:w-[calc(50%-16px)] w-full"
                 key={mapKey}
               >
-                <Card className="min-h-[66px]">
+                <Card className="min-h-[66px] text-ellipsis truncate">
                   {objectKey !== "link" && (
                     <span className="capitalize">
                       {objectKey.replace("_", " ")}:{" "}
