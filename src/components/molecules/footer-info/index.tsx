@@ -25,9 +25,13 @@ export const FooterInfo = () => {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.github.com/techishiring"
+          href="https://www.github.com/TechIsHiring/job-hunt-resources"
         >
-          <Icon icon={SiGithub} iconAlt="GitHub for Tech Is Hiring" size={20} />
+          <Icon
+            icon={SiGithub}
+            iconAlt="GitHub for Job Search Resources App (this project)"
+            size={20}
+          />
         </a>
         <a
           target="_blank"
