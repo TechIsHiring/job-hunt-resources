@@ -52,7 +52,7 @@ export const AddResourceFormDisplay = ({
     defaultValues: {
       name: "",
       outline: "",
-      url: "",
+      link: "",
       description: "",
       owner: "",
       submitted_by: "",
@@ -125,7 +125,7 @@ export const AddResourceFormDisplay = ({
             />
             <FormField
               control={form.control}
-              name="url"
+              name="link"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Url</FormLabel>

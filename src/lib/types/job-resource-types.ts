@@ -8,7 +8,7 @@ export type JobResource = {
   [key: string]: string | undefined;
   name: string;
   outline: string;
-  url: string;
+  link: string;
   description: string;
   owner?: string;
   submitted_by?: string;
@@ -24,7 +24,7 @@ export const SubmitJobResourceZodSchema = zod.object({
     .string()
     .min(2, "Please add more than two characters.")
     .max(150, "Please keep your entry to less than 150 characters."),
-  url: zod.string().url({ message: "Please enter a valid url." }),
+  link: zod.string().url({ message: "Please enter a valid url." }),
   description: zod
     .string()
     .min(30, "Please add more than 30 characters.")
