@@ -91,7 +91,6 @@ export const AddResourceFormDisplay = ({
                     <Input
                       className="text-black bg-white dark:text-black dark:bg-white border-slate-600"
                       placeholder="Name"
-                      maxLength={30}
                       {...field}
                     />
                   </FormControl>
@@ -112,7 +111,6 @@ export const AddResourceFormDisplay = ({
                     <Input
                       className="text-black bg-white dark:text-black dark:bg-white border-slate-600"
                       placeholder="Outline"
-                      maxLength={30}
                       {...field}
                     />
                   </FormControl>
@@ -133,7 +131,6 @@ export const AddResourceFormDisplay = ({
                     <Input
                       className="text-black bg-white dark:text-black dark:bg-white border-slate-600"
                       placeholder="Url"
-                      maxLength={30}
                       {...field}
                     />
                   </FormControl>
@@ -154,7 +151,6 @@ export const AddResourceFormDisplay = ({
                     <Textarea
                       placeholder="Description"
                       className="text-black bg-white dark:text-black dark:bg-white border-slate-600 resize-none"
-                      maxLength={400}
                       {...field}
                     />
                   </FormControl>
@@ -175,7 +171,6 @@ export const AddResourceFormDisplay = ({
                     <Input
                       className="text-black bg-white dark:text-black dark:bg-white border-slate-600"
                       placeholder="Owner"
-                      maxLength={30}
                       {...field}
                     />
                   </FormControl>
@@ -225,7 +220,6 @@ export const AddResourceFormDisplay = ({
                     <Input
                       className="text-black bg-white dark:text-black dark:bg-white border-slate-600"
                       placeholder="Your Name"
-                      maxLength={30}
                       {...field}
                     />
                   </FormControl>
