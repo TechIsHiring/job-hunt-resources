@@ -18,7 +18,7 @@ export default function AppAnalytics({
 }) {
   return (
     <>
-      <PostHogProvider client={posthog}>{children}</PostHogProvider>;
+      <PostHogProvider client={posthog}>{children}</PostHogProvider>
       <Analytics />
     </>
   );
