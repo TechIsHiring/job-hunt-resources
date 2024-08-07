@@ -3,6 +3,7 @@ import { Divider } from "@/components/atoms/divider";
 import { Icon } from "@/components/atoms/icon";
 import { FiExternalLink } from "react-icons/fi";
 import { Card } from "@/components/atoms/card";
+import { RecordClickLink } from "@/components/atoms/record-click-link";
 
 interface ResourceCardBodyProps {
   resourceDetails: JobResource;
@@ -32,22 +33,10 @@ export const ResourceCardBody = ({
                     </span>
                   )}
                   {objectKey === "link" ? (
-                    <a
-                      className="flex gap-1 items-center hover:underline"
-                      href={resourceDetails[objectKey]}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span className="h-6 w-6">
-                        <Icon
-                          icon={FiExternalLink}
-                          iconAlt={`external link to ${resourceDetails.name}`}
-                        />
-                      </span>
-                      <p className="text-ellipsis truncate">
-                        {resourceDetails[objectKey]}
-                      </p>
-                    </a>
+                    <RecordClickLink
+                      link={resourceDetails[objectKey]}
+                      resourceName={resourceDetails.name}
+                    />
                   ) : objectKey === "submitted_on" ? (
                     new Date(
                       `${resourceDetails[objectKey]}`
