@@ -200,7 +200,7 @@ export const AddResourceFormDisplay = ({
                             value={category}
                             className="text-black bg-white dark:text-black dark:bg-white border-slate-600 capitalize"
                           >
-                            {category}
+                            {category.replace("_", " ")}
                           </SelectItem>
                         ))}
                       </SelectContent>
