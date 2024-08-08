@@ -10,7 +10,7 @@ import { ResourceData } from "@/lib/types/job-resource-types";
 import { ResourceCardBody } from "@/components/molecules/resources-card-body";
 import { Divider } from "@/components/atoms/divider";
 import { CategoryIcon } from "@/components/molecules/category-icon";
-import { replaceUnderscores } from "@/lib/replace-underscores";
+import replaceUnderscores from "@/lib/replace-underscores";
 
 interface JobHuntResourceListProps {
   jobResources: ResourceData;

@@ -2,7 +2,7 @@ import { JobResource } from "@/lib/types/job-resource-types";
 import { Divider } from "@/components/atoms/divider";
 import { Card } from "@/components/atoms/card";
 import { RecordClickLink } from "@/components/atoms/record-click-link";
-import { replaceUnderscores } from "@/lib/replace-underscores";
+import replaceUnderscores from "@/lib/replace-underscores";
 
 interface ResourceCardBodyProps {
   resourceDetails: JobResource;
