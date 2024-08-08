@@ -1,9 +1,8 @@
 import { JobResource } from "@/lib/types/job-resource-types";
 import { Divider } from "@/components/atoms/divider";
-import { Icon } from "@/components/atoms/icon";
-import { FiExternalLink } from "react-icons/fi";
 import { Card } from "@/components/atoms/card";
 import { RecordClickLink } from "@/components/atoms/record-click-link";
+import { replaceUnderscores } from "@/lib/replace-underscores";
 
 interface ResourceCardBodyProps {
   resourceDetails: JobResource;
@@ -29,7 +28,7 @@ export const ResourceCardBody = ({
                 <Card className="min-h-[66px] text-ellipsis truncate">
                   {objectKey !== "link" && (
                     <span className="capitalize">
-                      {objectKey.replace("_", " ")}:{" "}
+                      {replaceUnderscores(objectKey)}:{" "}
                     </span>
                   )}
                   {objectKey === "link" ? (
