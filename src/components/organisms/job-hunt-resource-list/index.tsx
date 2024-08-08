@@ -10,7 +10,6 @@ import { ResourceData } from "@/lib/types/job-resource-types";
 import { ResourceCardBody } from "@/components/molecules/resources-card-body";
 import { Divider } from "@/components/atoms/divider";
 import { CategoryIcon } from "@/components/molecules/category-icon";
-import replaceUnderscores from "@/lib/replace-underscores";
 
 interface JobHuntResourceListProps {
   jobResources: ResourceData;
@@ -27,9 +26,7 @@ export const JobHuntResourceList = ({
         <section key={key} className="flex flex-col gap-8">
           <Divider className="border-fglightmode/60 dark:border-slate-300 border-t-[1px]" />
           <span className="flex gap-4 px-2">
-            <CategoryIcon
-              categoryTitle={replaceUnderscores(jobResourceIndex)}
-            />
+            <CategoryIcon categoryTitle={jobResourceIndex} />
             <h2 className="capitalize font-semibold">
               {jobResourceIndex.replace("_", " ")}
             </h2>
