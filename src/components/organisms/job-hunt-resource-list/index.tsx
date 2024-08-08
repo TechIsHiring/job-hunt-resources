@@ -27,7 +27,9 @@ export const JobHuntResourceList = ({
           <Divider className="border-fglightmode/60 dark:border-slate-300 border-t-[1px]" />
           <span className="flex gap-4 px-2">
             <CategoryIcon categoryTitle={jobResourceIndex} />
-            <h2 className="capitalize font-semibold">{jobResourceIndex}</h2>
+            <h2 className="capitalize font-semibold">
+              {jobResourceIndex.replace("_", " ")}
+            </h2>
           </span>
           <div className="flex flex-col gap-6 w-full">
             {jobResources[jobResourceIndex].map((jobResource, key) => (
