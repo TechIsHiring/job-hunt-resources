@@ -21,7 +21,11 @@ export const RecordClickLink = ({
       href={link}
       target="_blank"
       rel="noreferrer"
-      onClick={() => posthog.capture("Resource Click-through")}
+      onClick={() =>
+        posthog.capture("Resource Click-through", {
+          resource_name: resourceName,
+        })
+      }
     >
       <span className="h-6 w-6">
         <Icon
