@@ -6,7 +6,7 @@ interface CategoryTitleProps {
 
 export const CategoryTitle = ({ categoryName }: CategoryTitleProps) => {
   return (
-    <span className="flex gap-4 px-2">
+    <span id={categoryName} className="flex gap-4 px-2">
       <CategoryIcon categoryTitle={categoryName} />
       <h2 className="capitalize font-semibold">
         {categoryName.replace("_", " ")}
