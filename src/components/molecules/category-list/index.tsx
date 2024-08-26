@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { CategoryIcon } from "../category-icon";
 
 interface CategoryListProps {
   categoryList: string[];
@@ -9,7 +10,8 @@ export const CategoryList = ({ categoryList }: CategoryListProps) => {
     <nav className="flex gap-2 py-1">
       {categoryList.map((category, key) => (
         <a key={key} href={`#${category}`}>
-          <Button className="rounded-full text-base font-semibold hover:bg-slate-400 bg-slate-200 text-black dark:hover:bg-slate-800 dark:bg-slate-600 dark:text-white">
+          <Button className="flex gap-2 capitalize rounded-full text-base font-semibold hover:bg-slate-400 bg-slate-200 text-black dark:hover:bg-slate-800 dark:bg-slate-600 dark:text-white">
+            <CategoryIcon categoryTitle={category} />
             {category}
           </Button>
         </a>
