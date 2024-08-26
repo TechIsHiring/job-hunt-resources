@@ -229,11 +229,7 @@ export const AddResourceFormDisplay = ({
               )}
             />
             <DialogFooter>
-              <Button
-                className="dark:bg-gray-600"
-                variant="outline"
-                type="submit"
-              >
+              <Button variant="outline" type="submit">
                 Submit
               </Button>
             </DialogFooter>
