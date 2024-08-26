@@ -24,7 +24,7 @@ export const CategoryIcon = ({ categoryTitle }: CategoryIconProps) => {
   return (
     <Icon
       icon={categoryIcons[categoryTitle]}
-      iconAlt={`Icon for ${categoryTitle} category`}
+      iconAlt={`Icon for ${categoryTitle.replace("_", " ")} category`}
       size={24}
     />
   );
